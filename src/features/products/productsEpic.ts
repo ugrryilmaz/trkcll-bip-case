@@ -1,10 +1,9 @@
-// src/features/products/productsEpic.ts
-import { ofType } from 'redux-observable';
 import { of, delay, map, catchError } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
+import { ofType } from 'redux-observable';
+import { Action } from '@reduxjs/toolkit';
 import { faker } from '@faker-js/faker';
 import { Observable } from 'rxjs';
-import { Action } from '@reduxjs/toolkit';
 
 import { fetchProducts, fetchProductsSuccess, fetchProductsError } from './productsSlice';
 import type { Product } from '@/types/product';

@@ -1,6 +1,5 @@
-// src/app/store.ts
-import { configureStore } from '@reduxjs/toolkit';
 import { createEpicMiddleware } from 'redux-observable';
+import { configureStore } from '@reduxjs/toolkit';
 import type { Action } from '@reduxjs/toolkit';
 
 import productsReducer from '@/features/products/productsSlice';

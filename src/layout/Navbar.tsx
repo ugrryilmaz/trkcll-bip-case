@@ -1,5 +1,6 @@
-import { AppBar, Toolbar, Typography, IconButton, Badge } from '@mui/material';
+import { AppBar, Toolbar, Typography, IconButton, Badge, Container } from '@mui/material';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import SearchBar from '@/features/products/components/SearchBar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import type { RootState } from '@/app/store';
 import { useSelector } from 'react-redux';
@@ -14,19 +15,22 @@ const Navbar = ({ onCartClick }: Props) => {
   );
 
   return (
-    <AppBar position="static" color="primary">
-      <Toolbar>
-        <Typography variant="h6" sx={{ flexGrow: 1 }}>
-          BiP Case Study
-        </Typography>
+    <>
+      <AppBar position="static" color="primary">
+        <Toolbar sx={{ justifyContent: 'space-between' }}>
+          <Typography variant="h6">BiP Case Study</Typography>
+          <IconButton color="inherit" onClick={onCartClick}>
+            <Badge badgeContent={cartItemCount} color="secondary">
+              <FontAwesomeIcon icon={faShoppingCart} />
+            </Badge>
+          </IconButton>
+        </Toolbar>
+      </AppBar>
 
-        <IconButton color="inherit" onClick={onCartClick}>
-          <Badge badgeContent={cartItemCount} color="secondary">
-            <FontAwesomeIcon icon={faShoppingCart} />
-          </Badge>
-        </IconButton>
-      </Toolbar>
-    </AppBar>
+      <Container sx={{ mt: 2, mb: 2 }}>
+        <SearchBar />
+      </Container>
+    </>
   );
 };
 

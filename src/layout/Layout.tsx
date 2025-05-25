@@ -1,4 +1,5 @@
 import { Container } from '@mui/material';
+import AppSnackbar from './AppSnackbar';
 import CartDrawer from './CartDrawer';
 import { useState } from 'react';
 import Navbar from './Navbar';
@@ -24,6 +25,7 @@ const Layout = ({ children }: Props) => {
       <Navbar onCartClick={handleCartClick} />
       <CartDrawer open={isCartOpen} onClose={handleDrawerClose} />
       <Container sx={{ mt: 4 }}>{children}</Container>
+      <AppSnackbar />
     </>
   );
 };

@@ -1,10 +1,13 @@
-import ProductList from '@/features/products/components/ProductList';
+import ProductListPage from '@/pages/product/ProductListPage';
 import Layout from '@/layout/Layout';
 
 const App = () => {
   return (
     <Layout>
-      <ProductList />
+      {/*
+       * projede bir routing ihtiyacı olmasa da page tanımı üzerinden gitmek istedim
+       */}
+      <ProductListPage />
     </Layout>
   );
 };

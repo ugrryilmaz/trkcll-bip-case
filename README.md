@@ -1,54 +1,78 @@
-# React + TypeScript + Vite
+# BiP Case Study
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Bu proje, BiP için hazırlanmış bir e-ticaret listeleme uygulamasının frontend case study'dir. Uygulama, modern React ekosisteminde **Redux-Observable**, **RxJS**, **Material UI**, **TypeScript** gibi teknolojileri kullanarak functional programming ve reactive pattern'lerle geliştirilmiştir.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Proje Hakkında
 
-## Expanding the ESLint configuration
+Uygulama, mock data (faker.js ile oluşturulmuş) ürünleri listeleyip, filtreleme, arama, sepete ekleme ve etkileşimli geri bildirimler sunmaktadır. Geliştirme sücrecinde performans, kullanıcı deneyimi ve okunabilir kod yapısı önceliklendirilmiştir.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## 🧱 Kullanılan Teknolojiler
+
+- **React 19**
+- **TypeScript 5**
+- **Redux Toolkit**
+- **Redux Observable (RxJS)**
+- **Material UI v7.1.0 (Grid v2 desteği ile)**
+- **Axios**
+- **Faker.js**
+- **Font Awesome (Free)**
+
+---
+
+## 🔧 Mimarî Yapı ve Desenler
+
+- **Feature-based folder structure** (`features/products`, `features/cart` vs.)
+- **Reaktif veri akışı**: `redux-observable` & `rxjs` ile event-driven architecture
+- **Functional programming** yaklaşımı (`map`, `filter`, `switchMap` gibi operatorlerle)
+- **Typed Redux** yapısı (`AppDispatch`, `RootState`, `PayloadAction` tipleriyle)
+- **Separation of concerns** prensibi (epic, slice, component ayrımı)
+
+---
+
+## 🌟 Özellikler
+
+- 🎨 Ürün listeleme (kategori ve fiyat filtreleriyle)
+- 🔍 Anlık arama ve filtreleme (RxJS ile async debounce)
+- 🛒 Sepete ürün ekleme / çıkarma / adet değiştirme
+- 📣 Epics üzerinden snackbar mesaj yönetimi
+- ♻️ Ürünleri mock API’den sayfa sayfa getirme (**WIP: Infinite Scroll**)
+- 🖼️ Ürün görsellerinde lazy load ve performans optimizasyonu (**WIP**)
+- ⚠️ Error boundary ve hata yönetimi senaryoları (**WIP**)
+- 📦 Tüm stateler Redux store üzerinden yönetilir
+
+---
+
+## 🛠️ Projeyi Çalıştırma
+
+```bash
+# Gerekli bağımlılıkları kur
+yarn install
+
+# Geliştirme sunucusunu başlat
+yarn dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+> Proje Vite ile yapılandırılmıştır ve `yarn` paket yöneticisi kullanır.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+---
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+## 📁 Dizin Yapısı (ozet)
+
+```bash
+src/
+├── app/               # Store ve global tanımlar
+├── features/          # Tüm domain feature’ları (cart, products)
+├── layout/            # Ortak layout bileşenleri (Navbar, Drawer)
+├── pages/             # Sayfa bazlı component yapısı
+├── types/             # Ortak tip tanımlamaları
+├── epics/             # rootEpic birleşimi
+└── main.tsx           # Giriş dosyası
 ```
+
+---
+
+Her commit, Conventional Commits formatına uygun şekilde kategorize edilir (`feat`, `fix`, `chore`, `refactor`).

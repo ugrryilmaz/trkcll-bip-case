@@ -1,19 +1,17 @@
 import { faPlus, faMinus, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { ListItem, ListItemText, IconButton, Stack } from '@mui/material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { CartItem as Item } from '@/types/product';
 import { useDispatch } from 'react-redux';
 
 import { increaseQuantity, decreaseQuantity, removeFromCart } from '../cartSlice';
 import type { AppDispatch } from '@/app/store';
 
 type Props = {
-  id: string;
-  name: string;
-  quantity: number;
-  price: number;
+  item: Item;
 };
 
-const CartItem = ({ id, name, quantity, price }: Props) => {
+const CartItem = ({ item }: Props) => {
   const dispatch = useDispatch<AppDispatch>();
 
   return (
@@ -21,21 +19,21 @@ const CartItem = ({ id, name, quantity, price }: Props) => {
       disableGutters
       secondaryAction={
         <Stack direction="row" spacing={1}>
-          <IconButton onClick={() => dispatch(decreaseQuantity(id))} size="small">
+          <IconButton onClick={() => dispatch(decreaseQuantity(item))} size="small">
             <FontAwesomeIcon icon={faMinus} />
           </IconButton>
-          <IconButton onClick={() => dispatch(increaseQuantity(id))} size="small">
+          <IconButton onClick={() => dispatch(increaseQuantity(item))} size="small">
             <FontAwesomeIcon icon={faPlus} />
           </IconButton>
-          <IconButton onClick={() => dispatch(removeFromCart(id))} size="small" color="error">
+          <IconButton onClick={() => dispatch(removeFromCart(item))} size="small" color="error">
             <FontAwesomeIcon icon={faTrash} />
           </IconButton>
         </Stack>
       }
     >
       <ListItemText
-        primary={`${name} x${quantity}`}
-        secondary={`₺${(price * quantity).toFixed(2)}`}
+        primary={`${item.name} x${item.quantity}`}
+        secondary={`₺${(item.price * item.quantity).toFixed(2)}`}
       />
     </ListItem>
   );

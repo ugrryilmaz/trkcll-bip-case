@@ -12,7 +12,7 @@ const AppSnackbar = () => {
       open={open}
       autoHideDuration={3000}
       onClose={() => dispatch(hideSnackbar())}
-      anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+      anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
     >
       <Alert onClose={() => dispatch(hideSnackbar())} severity="success" sx={{ width: '100%' }}>
         {message}

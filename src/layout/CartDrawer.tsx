@@ -34,13 +34,7 @@ const CartDrawer = ({ open, onClose }: Props) => {
           <>
             <List>
               {items.map((item) => (
-                <CartItem
-                  id={item.id}
-                  key={item.id}
-                  name={item.name}
-                  quantity={item.quantity}
-                  price={item.price}
-                />
+                <CartItem item={item} />
               ))}
             </List>
 

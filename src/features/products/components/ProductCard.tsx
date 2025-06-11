@@ -30,7 +30,7 @@ const ProductCard = ({ product }: Props) => {
       </CardContent>
       <Stack direction="row" spacing={2} sx={{ p: 2 }}>
         <Button variant="contained" fullWidth onClick={handleAddToCart}>
-          Sepete Ekle
+          Add to Cart
         </Button>
       </Stack>
     </Card>
